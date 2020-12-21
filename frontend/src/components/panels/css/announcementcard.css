@@ -202,9 +202,13 @@
   line-height: 21px;
   /* or 162% */
   width: auto;
+  min-width: 100%;
   padding: 10px;
   min-height: auto;
   max-height: 150px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   color: #183247;
 }
 .commented-top {
