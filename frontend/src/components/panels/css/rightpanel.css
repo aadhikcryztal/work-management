@@ -1,0 +1,319 @@
+.Rightpanel {
+  width: 100%;
+  height: 100%;
+}
+.Rightpanel-title-section {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 15px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+
+  background-color: #ffffff;
+  color: #183247;
+}
+.Rightpanel-manipulationsection {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 15px;
+  line-height: 18px;
+}
+.Rightpanel-search-section {
+  width: 191px;
+  height: 28px;
+  background: #ffffff;
+  color: #a1a6a9;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  font-size: 13px;
+  padding: 10px 15px;
+  gap: 10px;
+}
+.Rightpanel-search-section > .search-input {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+.Rightpanel-search-section > .search-input::placeholder {
+  color: #a1a6a9;
+}
+.Rightpanel-plus-announcements {
+  width: 190px;
+  height: 28px;
+  background: #3bc163;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  padding: 10px 15px;
+  font-size: 13px;
+  gap: 10px;
+}
+.Rightpanel-form-card {
+  position: absolute;
+  width: 420px;
+  padding: 40px 30px;
+  min-height: 100vh;
+  max-height: 100%;
+  right: 0px;
+  top: 0px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  animation: animate-formcard 1s ease-in-out;
+
+  background: #ffffff;
+}
+@keyframes animate-formcard {
+  from {
+    right: -430px;
+  }
+  to {
+    right: 0px;
+  }
+}
+.Rightpanel-form-row {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #a1a6a9;
+  font-size: 13px;
+  gap: 5px;
+}
+
+.form-date-time,
+.form-category-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+}
+.Rightpanel-form-row > input::placeholder {
+  color: #a1a6a9;
+}
+.Rightpanel-form-row > input {
+  border: 0.5px solid #a1a6a9;
+  width: 150px;
+  height: 28px;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 2px;
+}
+.Rightpanel-form-row > input[type="text"] {
+  width: 360px;
+}
+.Rightpanel-form-row > textarea,
+.form-notifyto-input {
+  border: 0.5px solid #a1a6a9;
+  resize: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 2px;
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.form-notifyto-input {
+  overflow-y: scroll;
+}
+.form-notifyto-input > input {
+  outline: none;
+  border: none;
+  width: 360px;
+}
+.form-title-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-card-close {
+  width: 28px;
+  height: 28px;
+  background: #f6f6f7;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-time {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.form-time > .form-label {
+  width: 150px;
+  display: flex;
+  justify-content: flex-start;
+}
+.form-category-section {
+  justify-content: flex-start;
+  gap: 30px;
+}
+.input-form-category {
+  background: rgba(161, 166, 169, 0.0776721);
+  border: 0.5px solid #a1a6a9;
+  border-radius: 14px;
+  padding: 5px 10px;
+}
+.category-active {
+  background-color: #3bc163;
+  color: #ffffff;
+}
+.form-label {
+  font-size: 13px;
+  line-height: 18px;
+}
+.form-buttons {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 30px;
+}
+.form-discard,
+.form-send {
+  width: 120px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  border: 0.5px solid #a1a6a9;
+}
+.form-discard {
+  background: #ffffff;
+  color: #a1a6a9;
+}
+.form-send {
+  background: #3bc163;
+  color: #ffffff;
+}
+.form-time,
+.form-date,
+.form-expireon {
+  width: 150px;
+  position: relative;
+}
+.notify-mail {
+  width: auto;
+  display: inline;
+  padding: 5px 10px;
+  background: rgba(161, 166, 169, 0.125085);
+  /* background: rgba(161, 166, 169, 0.925085); */
+  border-radius: 2px;
+  color: #183247;
+}
+.cancel-mail {
+  margin-left: 5px;
+  color: rgba(24, 50, 71, 0.404);
+}
+.cancel-mail:hover {
+  color: rgba(24, 50, 71, 0.822);
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #a1a6a9 !important;
+  opacity: 0.32;
+}
+::-webkit-datetime-edit-text {
+  color: #a1a6a9;
+  padding: 0 2px;
+}
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  color: #a1a6a9;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0.32;
+}
+input[type="time"]::-webkit-datetime-edit-text {
+  padding: 0 0.6em;
+}
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+  color: #a1a6a9;
+}
+
+.form-description-input,
+.form-notifyto-input {
+  height: 76px !important;
+}
+.Rightpanel-form-card-message{
+  position: absolute;
+  width : 300px;
+  height: auto;
+  padding : 5px 5px;
+  color : #183247;
+  right : 60px;
+  top : 65px;
+  border-radius: 2px;
+  animation : fadeincard 1.3s ease-in-out;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.successmsg
+{
+  background-color: #3bc163e3;
+}
+.errormsg{
+  background-color: rgba(255, 9, 1, 0.863);
+  color: #ffffff;
+}
+@keyframes fadeincard
+{
+    from{opacity: 0;}
+    to{opacity: .8;}
+}
+.Announcement-cards
+{
+  width: 100%;
+  min-height: 80vh;
+  max-height: auto;
+
+}
