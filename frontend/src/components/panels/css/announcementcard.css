@@ -23,8 +23,8 @@
 }
 .Announcementcard-view {
   position: fixed;
-  right : 0px;
-  bottom: 0px;
+  right: 0px;
+  top: 100px;
   width: 400px;
   height: 650px;
   padding-right: 3px;
@@ -38,9 +38,13 @@
   margin-top: 10px;
   animation: animateCommentCard 1.5s ease-in-out;
 }
-@keyframes animateCommentCard{
-  from{opacity: .35;}
-  to{right: 1;}
+@keyframes animateCommentCard {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    right: 1;
+  }
 }
 .Announcement-card {
   width: 100%;
@@ -204,8 +208,7 @@
   max-height: 150px;
   color: #183247;
 }
-.commented-top
-{
+.commented-top {
   overflow-y: scroll;
   display: flex;
   justify-content: flex-start;
@@ -216,7 +219,7 @@
   max-height: 300px;
   display: flex;
   flex-direction: column;
-  gap : 10px;
+  gap: 10px;
   overflow-y: scroll;
   margin-bottom: 10px;
 }
@@ -267,37 +270,36 @@
 .comment-input {
   width: 90%;
   height: 100%;
-  padding : 5px 20px;
+  padding: 5px 20px;
   resize: none;
   outline: none;
   border: none;
 }
-.comment-input ::placeholder{
-    color: rgba(235, 238, 240, 0.494254);
+.comment-input ::placeholder {
+  color: rgba(235, 238, 240, 0.494254);
 }
-.comment-submit:hover{
+.comment-submit:hover {
   color: rgba(24, 50, 71, 0.849);
 }
-.Rightpanel-form-card-message{
+.Rightpanel-form-card-message {
   position: absolute;
-  width : 300px;
+  width: 300px;
   height: auto;
-  padding : 5px 5px;
-  color : #183247;
-  right : 60px;
-  top : 65px;
+  padding: 5px 5px;
+  color: #183247;
+  right: 60px;
+  top: 65px;
   border-radius: 2px;
-  animation : fadeincard 1.3s ease-in-out;
+  animation: fadeincard 1.3s ease-in-out;
   font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.successmsg
-{
+.successmsg {
   background-color: #3bc163e3;
 }
-.errormsg{
+.errormsg {
   background-color: rgba(255, 9, 1, 0.863);
   color: #ffffff;
 }
