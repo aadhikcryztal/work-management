@@ -212,7 +212,7 @@ export default class rightpanel extends React.Component {
               <div
                 className="input-form-category"
                 onClick={() => this.selectCategory("Remainder")}
-                id="Reminder"
+                id="Remainder"
               >
                 Reminder
               </div>
