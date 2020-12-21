@@ -37,6 +37,7 @@ async function connection() {
 connection();
 
 console.log(path.join(__dirname + "/../frontend/build/index.html"))
+console.log(express.static("/../frontend/build"))
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
