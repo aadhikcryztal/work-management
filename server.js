@@ -20,9 +20,9 @@ var adminRoute = require("./Routes/admin");
 app.use("/api/squashapps", adminRoute);
 
 //Connecting Database.
-app.get("/", (req, res) => {
-  res.send("Am in Home");
-});
+// app.get("/", (req, res) => {
+//   res.send("Am in Home");
+// });
 
 async function connection() {
   try {
