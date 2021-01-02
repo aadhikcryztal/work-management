@@ -2,27 +2,20 @@ var express = require("express");
 var mongoose = require("mongoose");
 var dotenv = require("dotenv");
 var cors = require('cors');
-var fs = require("fs");
 var path = require("path");
 
 let app = express();
-// app.use(upload());
 dotenv.config();
 
 app.use(express.json());
 app.use( cors())
-//importing Routing
 
-var adminRoute = require("./Routes/admin");
+let dashboardroutes = require("./backend/Routes/dashboardroutes");
+let loginroutes = require("./backend/Routes/loginroutes");
 
-//introducing Middlewares
+app.use("/api/squashapps", loginroutes);
+app.use("/api/squashapps/dashboard", dashboardroutes);
 
-app.use("/api/squashapps", adminRoute);
-
-//Connecting Database.
-// app.get("/", (req, res) => {
-//   res.send("Am in Home");
-// });
 
 async function connection() {
   try {

@@ -111,7 +111,7 @@ export default class rightpanel extends React.Component {
   };
 
   retriveAnnouncements = async () => {
-    let response = await Axios.get("/api/squashapps/retrivingpost");
+    let response = await Axios.get("/api/squashapps/dashboard/retrivingpost");
     let announcements = response.data.reverse();
     this.props.updateAnnouncements(announcements);
   };
@@ -130,7 +130,7 @@ export default class rightpanel extends React.Component {
       dateSubmitted: currentDate,
     };
     this.discardForm();
-    let response = await Axios.post("/api/squashapps/createpost", formdetails);
+    let response = await Axios.post("/api/squashapps/dashboard/createpost", formdetails);
     if (response.status === 200) {
       this.setState({
         statusMessage: {

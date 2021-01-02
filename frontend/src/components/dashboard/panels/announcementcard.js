@@ -72,7 +72,9 @@ export default class announcementcard extends Component {
   };
 
   retrivingAllComments = async () => {
-    let response = await Axios.get(`/api/squashapps/retrivingallcomment/`);
+    let response = await Axios.get(
+      `/api/squashapps/dashboard/retrivingallcomment/`,
+    );
     this.setState(
       {
         retriveAllComments: response.data,
@@ -86,7 +88,7 @@ export default class announcementcard extends Component {
   retrivingComments = async () => {
     let stringId = String(this.state.viewedAnnouncement._id);
     let response = await Axios.get(
-      `/api/squashapps/retrivingcomment/?id=${stringId}`,
+      `/api/squashapps/dashboard/retrivingcomment/?id=${stringId}`,
     );
     this.setState(
       {
@@ -103,10 +105,10 @@ export default class announcementcard extends Component {
     let commentObject = {
       id: this.state.viewedAnnouncement._id,
       comments: comment,
-      dateSubmitted : new Date()
+      dateSubmitted: new Date(),
     };
     let response = await Axios.post(
-      "/api/squashapps/createcomments",
+      "/api/squashapps/dashboard/createcomments",
       commentObject,
     );
     if (response.status === 200) {

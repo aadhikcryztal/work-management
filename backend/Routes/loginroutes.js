@@ -1,94 +1,77 @@
 const router = require("express").Router();
 const profilecreation = require("../Models/adminuser");
-const createpost = require("../Models/createpost");
-const comments = require("../Models/createcomment");
-const verify = require("./verifytoken");
+// const createpost = require("../Models/createpost");
+// const comments = require("../Models/createcomment");
+// const verify = require("./verifytoken");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 var nodemailer = require('nodemailer');
 
 
-router.post("/createpost", async (req, res) => {
+// router.post("/createpost", async (req, res) => {
 
-  var newpost = new createpost({
-    subject : req.body.subject,
-    category : req.body.category,
-    date : req.body.date,
-    time : req.body.time,
-    location : req.body.location,
-    expires_on : req.body.expires_on,
-    description : req.body.description,
-    notify_to : req.body.notify_to,
-    dateSubmitted : req.body.dateSubmitted
-  });
+//   var newpost = new createpost({
+//     subject : req.body.subject,
+//     category : req.body.category,
+//     date : req.body.date,
+//     time : req.body.time,
+//     location : req.body.location,
+//     expires_on : req.body.expires_on,
+//     description : req.body.description,
+//     notify_to : req.body.notify_to,
+//     dateSubmitted : req.body.dateSubmitted
+//   });
 
-  try {
-    const response = await newpost.save();
-    res.send(response);
-  } catch (err) {
-    console.log(err);
-  }
+//   try {
+//     const response = await newpost.save();
+//     res.send(response);
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-});
-router.post("/createcomments", async (req, res) => {
+// });
+// router.post("/createcomments", async (req, res) => {
 
-  var newpost = new comments({
-    announcement_id : req.body.id,
-    comments: req.body.comments,
-    dateSubmitted : req.body.dateSubmitted
-  });
+//   var newpost = new comments({
+//     announcement_id : req.body.id,
+//     comments: req.body.comments,
+//     dateSubmitted : req.body.dateSubmitted
+//   });
 
-  try {
-    const response = await newpost.save();
-    res.send(response);
-  } catch (err) {
-    console.log(err);
-  }
+//   try {
+//     const response = await newpost.save();
+//     res.send(response);
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-});
+// });
 
-router.get("/retrivingpost/", async (req, res) => {
-  let user = req.query.user;
-  let response = await createpost.find({user:user});
-  res.send(response);
-});
+// router.get("/retrivingpost/", async (req, res) => {
+//   let user = req.query.user;
+//   let response = await createpost.find({user:user});
+//   res.send(response);
+// });
 
-router.get("/retrivingcomment/", async (req, res) => {
-  let id = req.query.id;
-  let response = await comments.find({announcement_id:id});
-  res.send(response);
-});
+// router.get("/retrivingcomment/", async (req, res) => {
+//   let id = req.query.id;
+//   let response = await comments.find({announcement_id:id});
+//   res.send(response);
+// });
 
-router.get("/retrivingallcomment/", async (req, res) => {
-  let id = req.query.id;
-  let response = await comments.find();
-  res.send(response);
-});
+// router.get("/retrivingallcomment/", async (req, res) => {
+//   let id = req.query.id;
+//   let response = await comments.find();
+//   res.send(response);
+// });
 
-
-
-// handler for the /user/:id path, which renders a special page
-router.get('/deletepost', async function (req, res) {
-  const removed = await createpost.deleteOne({_id: req.query.id});
-  res.status(200).send({"msg": "deleted successfully"})
-})
-
-const { authenticationvalidation, loginvalidation } = require("../validate");
-const { string } = require("@hapi/joi");
-// const { parse } = require("dotenv/types");
-
-router.get("/", verify, (req, res) => {
-  res.send("i'm Authenticated.");
-});
+// router.get('/deletepost', async function (req, res) {
+//   const removed = await createpost.deleteOne({_id: req.query.id});
+//   res.status(200).send({"msg": "deleted successfully"})
+// })
 
 router.post("/register", async (req, res) => {
 
-  //Lets Validate
-  // const { error } = authenticationvalidation(req.body);
-  // if (error) return res.status(400).send(error.details[0].message);
-
-
-  //Hashing Passwords
   const salt = await bcrypt.genSalt(10);
   const hashedpassword = await bcrypt.hash(req.body.password, salt);
 
@@ -113,22 +96,22 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  //Validating Inputs
-  // const { error } = loginvalidation(req.body);
-  // if (error) return res.status(400).send(error.details[0].message);
 
-  //Email Exist or not
   const user = await profilecreation.findOne({ email: req.body.email });
   if (!user) return res.status(200).send({code : 404, info : "Email not found" });
 
-  //password correct or wrong
   const validpassword = await bcrypt.compare(req.body.password, user.password);
   if (!validpassword) return res.status(200).send({code : 401, info : "Password Not Match" });
 
   const token = jwt.sign({ _id: user._id }, process.env.Secret_text);
   res.header("auth-token", token);
   res.send({code : 200,  token: token, user: user.name });
+
+
 });
+
+
+
 
 router.post("/verifyemail", async(req, res) =>{
   let toEmail = req.body.email;
@@ -138,7 +121,6 @@ router.post("/verifyemail", async(req, res) =>{
     code = parseInt(String(code).slice(0,5));
   }
 
-  //Email Exist or not
   const emailexist = await profilecreation.findOne({ email: toEmail });
   if (emailexist) return res.status(201).send({ msg: "Email already exist." });
 
