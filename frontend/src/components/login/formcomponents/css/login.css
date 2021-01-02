@@ -1,0 +1,209 @@
+.loginpage {
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: row;
+  padding: 0px 30px;
+}
+.loginpage-ui-img,
+.loginpage-form {
+  width: 50%;
+  height: 100%;
+  padding: 0px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.loginpage-form {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.loginpage-ui-img > img {
+  width: 100%;
+}
+.loginpage-form-title {
+  font-size: 33px;
+  line-height: 50px;
+  color: #183247;
+}
+
+.loginpage-form-subtitle {
+  font-size: 13px;
+  line-height: 32px;
+
+  color: rgba(24, 50, 71, 0.7);
+}
+.loginpage-form-elements-section,
+.loginpage-form-element,
+.loginpage-form-element > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.loginpage-form-elements-section,
+.loginpage-message {
+  margin-top: 40px;
+}
+.loginpage-form-element {
+  margin-bottom: 30px;
+}
+.loginpage-form-element > input,
+.loginpage-form-element > div > input {
+  width: 450px;
+  height: 50px;
+  border: 0.5px solid #a1a6a9;
+  border-radius: 2px;
+  margin-right: 30px;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 10px 20px;
+}
+
+.loginpage-form-element > div > input {
+  width: 210px;
+}
+
+.loginpage-form-element > input::placeholder,
+.loginpage-form-element > div > input::placeholder {
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(161, 166, 169, 0.62115);
+}
+
+.loginpage-form-element > label,
+.loginpage-form-element > div > label {
+  font-size: 13px;
+  line-height: 18px;
+  color: #a1a6a9;
+  margin-bottom: 5px;
+}
+.loginpage-form-elements-section > .col-2 {
+  width: 450px;
+  height: 25px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  line-height: 18px;
+}
+.col-2 > div {
+  min-width: 100px;
+  max-width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.col-2 > div:nth-child(2) {
+  color: #239cff;
+  display: flex;
+  justify-content: flex-end;
+}
+.loginpage-form-element > div > input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 238, 240, 0.4) 0%,
+    rgba(207, 207, 212, 0.4) 100%
+  );
+  border: 0.5px solid #a1a6a9;
+  border-radius: 2px;
+  margin-right: 5px;
+  margin-top: -4px;
+}
+.loginpage-email-submit {
+  background: #3bc163;
+  color: white;
+  min-width: 150px;
+  max-width: auto;
+  height: 40px;
+  border-radius: 2px;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.loginpage-message {
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 18px;
+}
+.alert-border {
+  border: 0.5px solid #ff0000;
+}
+.alert-info {
+  color: red;
+}
+.success-info {
+  color: green;
+}
+
+/* css loader */
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 70px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 24px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 48px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}

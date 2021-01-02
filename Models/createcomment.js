@@ -8,7 +8,11 @@ const comments = new mongoose.Schema({
     comments : {
         type : String,
         required : true
-    }
+    },
+    dateSubmitted: {
+        type : String,
+        required : true
+      }
 })
 
 module.exports =  mongoose.model("comments" , comments);

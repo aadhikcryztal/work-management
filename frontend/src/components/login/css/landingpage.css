@@ -1,0 +1,20 @@
+.landingpage{
+    width: 100vw;
+    min-height : 100vh;
+    max-height: 100%;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+.landingpage-navigation{
+    width: 100%;
+    height : 50px;
+    z-index: 5;
+}
+.landingpage-formsection{
+    width: 100%;
+    min-height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

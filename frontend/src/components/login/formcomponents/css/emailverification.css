@@ -1,0 +1,163 @@
+.emailverification {
+  width: 100vw;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: row;
+  padding: 0px 30px;
+}
+.emailverification-ui-img,
+.emailverification-form {
+  width: 50%;
+  height: inherit;
+  padding: 0px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.emailverification-form {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.emailverification-ui-img > img {
+  width: 100%;
+}
+.email-form-title {
+  font-size: 33px;
+  line-height: 50px;
+  color: #183247;
+}
+
+.email-form-subtitle {
+  font-size: 13px;
+  line-height: 32px;
+
+  color: rgba(24, 50, 71, 0.7);
+}
+.email-form-elements-section,
+.email-form-element {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.email-form-elements-section,
+.form-email-submit {
+  margin-top: 40px;
+}
+.email-form-element > input {
+  width: 450px;
+  height: 50px;
+  border: 0.5px solid #a1a6a9;
+  border-radius: 2px;
+  padding-left: 10px;
+}
+
+.email-form-element > input::placeholder {
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(161, 166, 169, 0.62115);
+}
+
+.email-form-element > label {
+  font-size: 13px;
+  line-height: 18px;
+  color: #a1a6a9;
+  margin-bottom: 5px;
+}
+.form-email-submit {
+  background: #3bc163;
+  color: white;
+  min-width: 150px;
+  max-width: auto;
+  height: 40px;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  padding : 10px 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.form-email-submit:hover {
+  box-shadow: 0px 5px 4px rgba(229, 229, 229, 0.5);
+}
+.emailverification-message {
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 18px;
+}
+.alert-border {
+  border: 0.5px solid #ff0000;
+}
+.alert-info {
+  color: red;
+}
+.success-info {
+  color: green;
+}
+
+
+  /* css loader */
+
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 70px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 24px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 48px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  

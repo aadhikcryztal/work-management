@@ -28,6 +28,10 @@ const Createpost = new mongoose.Schema({
   },
   notify_to : {
     type : Array
+  },
+  dateSubmitted: {
+    type : String,
+    required : true
   }
 });
 

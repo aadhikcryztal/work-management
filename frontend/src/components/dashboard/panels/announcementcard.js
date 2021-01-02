@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 import Axios from "axios";
 import "./css/announcementcard.css";
 
@@ -21,28 +22,22 @@ export default class announcementcard extends Component {
       commentsNumber: [],
       viewedAnnouncement: {},
       announcements: [],
-      statusMessage: { code:"", message: "" },
+      statusMessage: { code: "", message: "" },
       showmessage: false,
       fullModeAnnouncement: true,
     };
   }
   componentDidMount = () => {
-    this.setState(
-      { announcements: this.props.announcementArray.reverse() },
-      () => {
-        this.retrivingAllComments();
-      },
-    );
+    this.setState({ announcements: this.props.announcementArray }, () => {
+      this.retrivingAllComments();
+    });
   };
 
   componentWillReceiveProps = (nextprops) => {
     if (nextprops.announcementArray !== this.state.announcements)
-      this.setState(
-        { announcements: nextprops.announcementArray.reverse() },
-        () => {
-          this.retrivingAllComments();
-        },
-      );
+      this.setState({ announcements: nextprops.announcementArray }, () => {
+        this.retrivingAllComments();
+      });
   };
 
   getCommentNumbers = () => {
@@ -83,7 +78,6 @@ export default class announcementcard extends Component {
         retriveAllComments: response.data,
       },
       () => {
-        console.log(this.state.retriveAllComments);
         this.getCommentNumbers();
       },
     );
@@ -99,7 +93,7 @@ export default class announcementcard extends Component {
         comments: response.data,
       },
       () => {
-        this.getCommentNumbers();
+        this.retrivingAllComments();
       },
     );
   };
@@ -109,6 +103,7 @@ export default class announcementcard extends Component {
     let commentObject = {
       id: this.state.viewedAnnouncement._id,
       comments: comment,
+      dateSubmitted : new Date()
     };
     let response = await Axios.post(
       "/api/squashapps/createcomments",
@@ -118,18 +113,21 @@ export default class announcementcard extends Component {
       this.setState({
         statusMessage: {
           code: 200,
-          message: "Announcement created Successfully",
+          message: "comment created Successfully",
         },
         showmessage: true,
       });
     } else {
       this.setState({
-        statusMessage: { code: 400, message: "Error in creating announcement" },
+        statusMessage: { code: 400, message: "Error in submiting comments" },
         showmessage: true,
       });
     }
     setTimeout(() => {
-      this.setState({ showmessage: false });
+      this.setState({
+        showmessage: false,
+        announcements: this.state.announcements,
+      });
     }, 3000);
     let commentField = document.querySelector(".comment-input");
     commentField.value = "";
@@ -177,17 +175,25 @@ export default class announcementcard extends Component {
                       onClick={() => this.viewAnnouncement(singleAnnouncement)}
                     >
                       <FontAwesomeIcon icon={faComment} />
-                      {this.state.commentsNumber.map(
-                        (commentNumber, index) => {
-                            if(singleAnnouncement._id === commentNumber.id)
-                            return<span key={index} className="comment-number">
+                      {this.state.commentsNumber.map((commentNumber, index) => {
+                        if (singleAnnouncement._id === commentNumber.id)
+                          return (
+                            <span key={index} className="comment-number">
                               {commentNumber.count}
                             </span>
-                            ;
-                        }
+                          );
+                      })}
+                    </div>
+                    <div className="Announcement-createddate">
+                      {" "}
+                      {singleAnnouncement.dateSubmitted ? (
+                        <Moment format="D MMM YYYY, h:mmA">
+                          {singleAnnouncement.dateSubmitted}
+                        </Moment>
+                      ) : (
+                        " 04 Feb, 2019, 3:35PM"
                       )}
                     </div>
-                    <div className="Announcement-createddate">04 Feb, 2019</div>
                   </div>
                 </div>
                 <div className="Announcement-details-row2">
@@ -222,7 +228,7 @@ export default class announcementcard extends Component {
           ))}
         </div>
         <div className="Announcementcard-view" id="partition-2">
-        {this.state.showmessage ? (
+          {this.state.showmessage ? (
             <div
               className={
                 this.state.statusMessage.code === 200
@@ -255,7 +261,13 @@ export default class announcementcard extends Component {
               </div>
               <div className="Announcementcard-commented-comment-detail">
                 <div className="Announcementcard-comment-time">
-                  04 Feb, 2019, 3:35PM
+                  {this.state.viewedAnnouncement.dateSubmitted ? (
+                    <Moment format="D MMM YYYY, h:mmA">
+                      {this.state.viewedAnnouncement.dateSubmitted}
+                    </Moment>
+                  ) : (
+                    " 04 Feb, 2019, 3:35PM"
+                  )}
                 </div>
                 <div
                   className="Announcementcard-comment-close"
@@ -301,7 +313,13 @@ export default class announcementcard extends Component {
                   </div>
                   <div className="Announcementcard-commented-comment-detail">
                     <div className="Announcementcard-comment-time">
-                      04 Feb, 2019, 3:35PM
+                      {comment.dateSubmitted ? (
+                        <Moment format="D MMM YYYY, h:mmA">
+                          {comment.dateSubmitted}
+                        </Moment>
+                      ) : (
+                        " 04 Feb, 2019, 3:35PM"
+                      )}
                     </div>
                   </div>
                 </div>
@@ -311,7 +329,7 @@ export default class announcementcard extends Component {
               </div>
             ))}
           </div>
-           <div className="Announcements-viewed-comment-write">
+          <div className="Announcements-viewed-comment-write">
             <textarea
               type="text"
               placeholder="Be a first comment"
@@ -327,7 +345,7 @@ export default class announcementcard extends Component {
               onClick={() => this.sendComment()}
               className="icon-events comment-submit"
             />
-          </div> 
+          </div>
         </div>
       </div>
     );

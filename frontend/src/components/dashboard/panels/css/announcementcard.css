@@ -289,18 +289,19 @@
   padding: 5px 5px;
   color: #183247;
   right: 60px;
-  top: 65px;
+  top: 10px;
   border-radius: 2px;
-  animation: fadeincard 1.3s ease-in-out;
+  /* animation: fadeincard 1.3s ease-in-out; */
+  transition: all 1s;
   font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .successmsg {
-  background-color: #3bc163e3;
+  background-color: #67c082;
 }
 .errormsg {
-  background-color: rgba(255, 9, 1, 0.863);
+  background-color: rgb(230, 98, 94);
   color: #ffffff;
 }
