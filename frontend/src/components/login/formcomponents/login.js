@@ -19,14 +19,15 @@ export default class login extends Component {
     let email = this.state.email;
     let password = this.state.password;
     let message = {};
+    if(email !== "" && password !== ""){
     try {
       let response = await Axios.post("/api/squashapps/login", {
         email,
         password,
       });
-      localStorage.setItem('token', response.data.token);
       if (response.status === 200) {
         if (response.data.code === 200) {
+          localStorage.setItem('token', response.data.token);
           message = { code: 200, info: "Logged successfully" };
           this.props.loginHandler();
         } else {
@@ -36,6 +37,10 @@ export default class login extends Component {
     } catch (error) {
       console.log(error);
     }
+  }
+  else{
+    message = { code : 400 , info : "Enter Valid details" }
+  }
     this.setState({ message })
     setTimeout(() => {
       this.setState({ loaderOn: false, email: "", password: "", message:{}});
